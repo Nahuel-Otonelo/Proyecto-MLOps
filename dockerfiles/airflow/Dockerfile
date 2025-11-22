@@ -1,5 +1,4 @@
 FROM apache/airflow:3.0.2
-COPY requirements.txt /requirements.txt
 
 USER root
 RUN apt-get update \
@@ -9,8 +8,12 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+# Volvemos al usuario airflow para instalar librerías de Python
 USER airflow
+
+# Copiamos el requirements.txt (que le pasaremos desde el contexto de la raíz)
 COPY requirements.txt /requirements.txt
 
+# Instalamos las dependencias
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir apache-airflow[virtualenv]==3.0.2 -r /requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
