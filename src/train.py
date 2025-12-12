@@ -72,7 +72,8 @@ def train_and_log_model(model, model_name, X_train, y_train, X_test, y_test):
             sk_model=model,
             artifact_path="model",
             signature=signature,
-            input_example=X_train.iloc[:5]
+            input_example=X_train.iloc[:5],
+            registered_model_name="SocialNetworkAdsModel"
         )
         
         return acc, f1
