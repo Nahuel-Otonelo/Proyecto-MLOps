@@ -42,10 +42,11 @@ MLflow	http://localhost:5001	N/A
 ## ⚙️ Flujo de Trabajo (Pipeline)
 El DAG mlops_final_project automatiza los siguientes pasos:
 
-1. Automatización de Infraestructura (docker-compose)
-Se construye una imagen de Airflow personalizada inyectando el archivo requirements.txt.
-
-Un contenedor efímero (create_s3_buckets) inicializa los buckets en MinIO y carga automáticamente el dataset Social_Network_Ads.csv.
+1. Infraestructura (Docker Compose)
+*Antes de ejecutar el DAG*, Docker se encarga de:
+* Construir la imagen personalizada con las librerías necesarias.
+* Desplegar los servicios (Airflow, MinIO, MLflow).
+* Inicializar los buckets y cargar el dataset automáticamente.
 
 2. Preparación de Datos (src/data_prep.py)
 Ingesta: Lee el archivo crudo desde MinIO.
