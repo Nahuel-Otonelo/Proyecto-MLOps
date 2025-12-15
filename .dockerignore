@@ -1,0 +1,25 @@
+# Git
+.git
+.gitignore
+
+# Secretos 
+.env
+env/
+.venv/
+venv/
+
+# Python Cache y temporales
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Logs y datos locales que no queremos 'quemar' en la imagen
+airflow/logs/
+mlflow_artifacts/
+*.log
+.DS_Store
+
+# Documentación o archivos innecesarios para correr la app
+README.md
+notebooks/
